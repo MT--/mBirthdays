@@ -1,7 +1,7 @@
 {
-  "name": "ngrx-example",
+  "name": "mBirthdays",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "MT",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -42,5 +42,5 @@
     "@types/pouchdb": "^6.1.0",
     "typescript": "2.2.1"
   },
-  "description": "An Ionic project"
+  "description": ""
 }
