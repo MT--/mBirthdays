@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="showProfileModal()">
+        <ion-icon name="happy"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      mBirthdays
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only
+              (click)="showEditModal()"
+              color="secondary">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h2 *ngIf="!(birthdays | async)?.length"
+      (click)="showEditModal()"
+      tappable
+      text-center
+      margin
+      ion-text
+      color="primary">
+    <b>It looks like you haven't added any birthdays!</b>
+    <br>
+    <br>
+    <ion-icon name="add-circle"
+              color="secondary"
+              [style.font-size.em]="4"
+    ></ion-icon>
+  </h2>
+  <ion-list inset>
+    <ion-item *ngFor="let birthday of birthdays | async"
+              (click)="showEditModal(birthday)">
+      <h2 item-start>{{birthday.name}}</h2>
+      <p item-end>{{birthday.date | date:'yMMMMd'}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

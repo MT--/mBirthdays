@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start *ngIf="!isNewBirthday">
+      <button ion-button icon-only color="danger" (click)="confirmDeleteBirthday()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{action}} Birthday</ion-title>
+    <ion-buttons end>
+      <button ion-button navPop>
+        Cancel
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-icon item-left color="primary" name="person"></ion-icon>
+      <ion-label>Name</ion-label>
+      <ion-input text-right type="text" [(ngModel)]="birthday.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="calendar"></ion-icon>
+      <ion-label>Birthday</ion-label>
+      <ion-datetime displayFormat="MMMM D, YYYY"
+                    pickerFormat="MMMM D YYYY"
+                    [(ngModel)]="isoDate"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="notifications"></ion-icon>
+      <ion-label>Remind Me</ion-label>
+      <ion-toggle [(ngModel)]="birthday.notify"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <button ion-button full
+          [disabled]="!isoDate"
+          (click)="saveBirthday()">Save
+  </button>
+</ion-content>

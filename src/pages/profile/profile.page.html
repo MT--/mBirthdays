@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>mProfile</ion-title>
+    <ion-buttons right>
+      <button ion-button navPop>Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="currentUser.name"></ion-input>
+      <ion-avatar item-right (click)="confirmEditAvatar()">
+        <img src="http://shackmanlab.org/wp-content/uploads/2013/07/person-placeholder.jpg">
+      </ion-avatar>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="mail"></ion-icon>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="currentUser.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="call"></ion-icon>
+      <ion-label>Phone</ion-label>
+      <ion-input type="tel" [(ngModel)]="currentUser.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="notifications"></ion-icon>
+      <ion-label>Notifications</ion-label>
+      <ion-toggle [(ngModel)]="currentUser.notify"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left color="primary" name="clock"></ion-icon>
+      <ion-label>Display Birth Year</ion-label>
+      <ion-toggle [(ngModel)]="currentUser.displayBirthYear"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <button ion-button full
+          (click)="saveProfile()">Save
+  </button>
+</ion-content>
