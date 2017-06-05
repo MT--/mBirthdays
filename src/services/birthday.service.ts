@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
 import * as PouchDB from 'pouchdb';
 
 import { Birthday } from '../models/birthday';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 
 @Injectable()
 export class BirthdayService {
   private db: any;
-  private changes$: BehaviorSubject<any>;
+  private changes$: Subject<any>;
 
   constructor(public platform: Platform) {
-    this.changes$ = new BehaviorSubject({});
+    this.changes$ = new Subject();
   }
 
   /**
@@ -69,7 +68,7 @@ export class BirthdayService {
       this.initDB().then(
         () => this.db.allDocs({ include_docs: true })
       ).then(docs => {
-          return docs.rows.map(row => {
+          return docs[ 'rows' ].map(row => {
             row.doc.date = new Date(row.doc.date);
             return row.doc;
           });
@@ -82,7 +81,7 @@ export class BirthdayService {
    * listen for changes to PouchDB docs
    * @return {Subject<any>}
    */
-  public getChanges(): BehaviorSubject<any> {
+  public getChanges(): Subject<any> {
     return this.changes$;
   }
 

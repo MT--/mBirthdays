@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button (click)="authLogin()">Login</button>
+    </ion-buttons>
     <ion-title>mProfile</ion-title>
     <ion-buttons right>
       <button ion-button navPop>Cancel</button>
@@ -13,7 +16,7 @@
       <ion-label floating>Name</ion-label>
       <ion-input type="text" [(ngModel)]="currentUser.name"></ion-input>
       <ion-avatar item-right (click)="confirmEditAvatar()">
-        <img src="http://shackmanlab.org/wp-content/uploads/2013/07/person-placeholder.jpg">
+        <img src="https://pbs.twimg.com/profile_images/589081644989943810/TCsr9vN6.jpg">
       </ion-avatar>
     </ion-item>
     <ion-item>

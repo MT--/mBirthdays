@@ -20,6 +20,7 @@ import { ProfileService } from '../services/profile.service';
 import { ProfileActions } from '../actions/profile.actions';
 import { ProfileEffects } from '../effects/profile.effects';
 import { ProfileReducer } from '../reducers/profile.reducer';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProfileReducer } from '../reducers/profile.reducer';
     ProfilePage
   ],
   providers: [
+    AuthService,
     BirthdayActions,
     BirthdayService,
     ProfileActions,

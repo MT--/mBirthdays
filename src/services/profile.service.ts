@@ -24,7 +24,7 @@ export class ProfileService {
   public initDB(): Promise<any> {
     return this.platform.ready()
       .then(() => {
-        this.db = new PouchDB('user', { adapter: 'websql' });
+        this.db = new PouchDB('auth', { adapter: 'websql' });
         this.db.changes({ live: true, since: 'now', include_docs: true })
           .on('change', change => {
             this.changes$.next(change.doc);
@@ -54,7 +54,7 @@ export class ProfileService {
       this.initDB().then(
         () => this.db.allDocs({ include_docs: true })
       ).then(docs => {
-          return docs.rows.map(row => {
+          return docs[ 'rows' ].map(row => {
             return row.doc;
           });
         }

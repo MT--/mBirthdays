@@ -21,7 +21,6 @@ export class BirthdayEffects {
 
     this.changedBirthdays$ = this.birthdaySvc.getChanges()
       .map(change => {
-        console.warn(change);
         if ( change._deleted ) {
           return BirthdayActions.deleteBirthdaySuccess(change._id);
         } else {
@@ -52,10 +51,10 @@ export class BirthdayEffects {
   }
 
   @Effect() getBirthdays$(): Observable<any> {
-    return Observable.concat(
-      this.allBirthdays$,
-      this.changedBirthdays$
-    );
+      return Observable.concat(
+        this.allBirthdays$,
+        this.changedBirthdays$
+      );
   }
 
 }

@@ -7,6 +7,7 @@ import { AppState } from '../../services/app-state.service';
 import { ProfileActions } from '../../actions/profile.actions';
 
 import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class ProfilePage {
   // TODO: use FormBuilder
   constructor(
     public actionSheetCtrl: ActionSheetController,
+    public authSvc: AuthService,
     public store: Store<AppState>,
     public viewCtrl: ViewController
   ) {
@@ -34,6 +36,10 @@ export class ProfilePage {
     this.currentUser$ = this.store.select(state => state.currentUser);
     this.currentUser$.filter(user => !!user)
       .subscribe(user => this.currentUser = user);
+  }
+
+  public authLogin(): void {
+    this.authSvc.login();
   }
 
   public saveProfile(): void {
